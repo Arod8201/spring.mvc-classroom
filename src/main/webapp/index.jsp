@@ -19,6 +19,11 @@
 			<a href="/spring.mvc/mvc/product/">/spring.mvc/mvc/product/</a>
 		</li>
 		<br>
+		<li>
+			Session 11 User Lab<br>
+			<a href="/spring.mvc/mvc/user/">/spring.mvc/mvc/user/</a>
+		</li>
+		<br>
 	</ol>
 </body>
 </html>
