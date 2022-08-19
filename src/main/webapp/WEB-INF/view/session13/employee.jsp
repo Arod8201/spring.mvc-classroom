@@ -9,8 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet"
-		href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
+	<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
 	<meta charset="UTF-8">
 	<title>Employee Form</title>
 	<style type="text/css">
