@@ -105,4 +105,36 @@
 	<!-- 開啟事務的註解@驅動, 對事物相關的註解@進行掃描與解析 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	
+	
+	<!-- 配置 JPA 的 EntityManagerFactory -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		
+		<!-- 1 定義 datadource -->
+		<property name="dataSource" ref="dataSource" />
+		
+		<!-- 2 定義 vendor -->	
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+		
+		<!-- 3 定義 entity 掃描區 -->
+		<property name="packagesToScan">
+			<list>
+				<value>spring.mvc</value>
+			</list>
+		</property>
+		
+		<!-- 4 jpa vender 的配置設定 -->
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<!-- update 表示若資料表不存在但是有entity就會自動新增 -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+	
 </beans>
