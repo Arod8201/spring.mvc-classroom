@@ -13,7 +13,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Person {
-
 	// @NotEmpty(message = "姓名不可以是空值")
 	// @Size(min = 2, max = 50, message = "名字範圍必須介於2~50個字之間")
 	@NotEmpty(message = "{person.name.notEmpty}")
@@ -72,7 +71,7 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [name= " + name + ", age= " + age + ", member= " + member + ", birth= " + birth + "]";
+		return "Person [name=" + name + ", age=" + age + ", member=" + member + ", birth=" + birth + "]";
 	}
 
 }

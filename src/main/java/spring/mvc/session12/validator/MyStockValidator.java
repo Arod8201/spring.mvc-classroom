@@ -38,14 +38,13 @@ public class MyStockValidator implements Validator {
 				// 最新成交價
 				double price = stock.getQuote().getPrice().doubleValue();
 				System.out.println(price);
-				// 驗證買進價格必須是昨日收盤價的 ±10% 之間
+				// 驗證買進價格必須是昨日收盤價的±10%之間
 				if (myStock.getPrice() != null
 						&& (myStock.getPrice() > previousClose * 1.1 || myStock.getPrice() < previousClose * 0.9)) {
 					errors.rejectValue("price", "mystock.price.range");
 				}
-				// 買進股數必須是 1000 的倍數(1000股=1張)
-				if (myStock.getAmount() != null && (myStock.getAmount() < 1000 || 
-					myStock.getAmount() % 1000 != 0)) {
+				// 買進股數必須是1000的倍數(1000股=1張)
+				if (myStock.getAmount() != null && (myStock.getAmount() < 1000 || myStock.getAmount() % 1000 != 0)) {
 					errors.rejectValue("amount", "mystock.amount.error");
 				}
 			}

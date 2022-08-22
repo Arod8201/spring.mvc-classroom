@@ -5,6 +5,7 @@ import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,14 +22,26 @@ public class UserRestController {
 	private UserRepository userRepository;
 
 	@GetMapping("/auto_add") // 自動新增 user 資料
-	public List<User> addAuto() {
+	public String addAuto() {
 		Faker faker = new Faker();
 		User user = new User();
 		user.setName(faker.name().firstName());
 		user.setPassword(String.format("%04d", new Random().nextInt(1000)));
 		user.setBirth(faker.date().birthday());
 		userRepository.save(user);
+		// return userRepository.findAll();
+		return user.toString();
+	}
+
+	// 查詢
+	@GetMapping("/")
+	public List<User> query() {
 		return userRepository.findAll();
+	}
+
+	@GetMapping("/{name}")
+	public User getByName(@PathVariable("name") String name) {
+		return userRepository.getByName(name);
 	}
 
 }
